@@ -31,7 +31,11 @@ def example():
     return render_template('example.html', 
                             name=name , lab_num=lab_num ,
                             group=group , course=course, fruits=fruits, books=books )
-
+    
+@app.route('/lab2/')
+def lab2():
+    return render_template('lab2.html')
+        
 
 @app.route("/menu")
 def menu():
