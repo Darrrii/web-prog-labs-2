@@ -30,6 +30,11 @@
             <li> {{ f.name }}: {{ f.price }} &#x20bd;</li>
             {% endfor %}
         </ul>
+        <ul>
+            {% for b in books %}
+            <li> {{ b.name }}: {{ b.autor }}: {{ b.janr }}: {{ b.str }};</li>
+            {% endfor %}
+        </ul>
     </main>
     <footer>
         &copy;
