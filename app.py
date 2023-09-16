@@ -9,7 +9,7 @@ def start():
 @app.route('/lab2/example')
 def example():
     name= 'Pushkareva Daria'
-    return render_template('example.html', name=name)
+    return render_template('example.html', name-name)
 
 
 @app.route("/menu")
