@@ -8,7 +8,8 @@ def start():
 
 @app.route('/lab2/example')
 def example():
-    return render_template('example.html')
+    name= 'Pushkareva Daria'
+    return render_template('example.html', name=name)
 
 @app.route("/menu")
 def menu():
@@ -165,7 +166,7 @@ def cats():
 
 
         <footer>
-            &copy; Андронова Софья Пушкарёва Дарья, ФБИ-12, 3 курс, 2023
+            &copy; {{ name }}, ФБИ-12, 3 курс, 2023
         </footer>
     </body>
 </html>
