@@ -1,10 +1,14 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, render_template
 app= Flask(__name__)
 
 @app.route("/")
 @app.route("/index")
 def start():
     return redirect("/menu", code=302)
+
+@app.route('/lab2/example')
+def example():
+    return render_template('example.html')
 
 @app.route("/menu")
 def menu():
@@ -158,6 +162,8 @@ def cats():
         выбранных предметах, тем самым обозначая зону своего влияния.
         </div>
         <img src="''' +  url_for('static', filename='cat.jpg') + '''">
+
+
         <footer>
             &copy; Андронова Софья Пушкарёва Дарья, ФБИ-12, 3 курс, 2023
         </footer>
