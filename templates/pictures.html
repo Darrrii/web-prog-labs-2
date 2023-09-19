@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 2 {% endblock %}
+
+{% block main %}
+
+<link rel="stylesheet" href="''' +  url_for('static', filename='berry.jpg') + '''">
+<div> На этой картинке вкусные ягодки </div>
+<link rel="stylesheet" href="''' +  url_for('static', filename='cvet.jpg') + '''">
+<link rel="stylesheet" href="''' +  url_for('static', filename='kotik.jpg') + '''">
+<link rel="stylesheet" href="''' +  url_for('static', filename='turkey.jpg') + '''">
+{% endblock %}
