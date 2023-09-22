@@ -23,3 +23,7 @@ footer {
     left: 0;
     right: 0;
 }
+img {
+    width: auto;
+    margin: auto;
+}

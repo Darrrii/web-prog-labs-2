@@ -3,10 +3,11 @@
 {% block lab %} Лабораторная работа 2 {% endblock %}
 
 {% block main %}
-
-<link rel="stylesheet" href="''' +  url_for('static', filename='berry.jpg') + '''">
+<h1>Картинки</h1>
+<div>На первой картинке мы можем видеть вкусные ягодки</div>
+<img src=" ''' +  url_for('static', filename='berry.jpg') + ''' ">
 <div> На этой картинке вкусные ягодки </div>
-<link rel="stylesheet" href="''' +  url_for('static', filename='cvet.jpg') + '''">
-<link rel="stylesheet" href="''' +  url_for('static', filename='kotik.jpg') + '''">
-<link rel="stylesheet" href="''' +  url_for('static', filename='turkey.jpg') + '''">
+<img src="''' +  url_for('static', filename='cvet.jpg') + '''">
+<img src="''' +  url_for('static', filename='kotik.jpg') + '''">
+<img src="''' +  url_for('static', filename='turkey.jpg') + '''">
 {% endblock %}
