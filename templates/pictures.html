@@ -5,9 +5,10 @@
 {% block main %}
 <h1>Картинки</h1>
 <div>На первой картинке мы можем видеть вкусные ягодки</div>
-<img src=" ''' +  url_for('static', filename='berry.jpg') + ''' ">
+<img src="static/berry.jpg">
 <div> На этой картинке вкусные ягодки </div>
 <img src="''' +  url_for('static', filename='cvet.jpg') + '''">
 <img src="''' +  url_for('static', filename='kotik.jpg') + '''">
 <img src="''' +  url_for('static', filename='turkey.jpg') + '''">
+<img src="''' +  url_for('static', filename='kamni.jpg') + '''">
 {% endblock %}
