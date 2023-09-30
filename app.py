@@ -8,4 +8,13 @@ app.register_blueprint(lab1)
 app.register_blueprint(lab2)
 app.register_blueprint(lab3)
 
+@app.route('/lab2/zadanie')
+def zadanie():
+    A, B,C = 2,3,4
+    if A<B<C:
+        A=A*2
+        B=B*2
+        C=C*2
+        return render_template('zadanie.html',A=A, B=B, C=C)
+
 
