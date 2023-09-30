@@ -10,11 +10,16 @@ app.register_blueprint(lab3)
 
 @app.route('/lab2/zadanie')
 def zadanie():
-    A, B,C = 2,3,4
+    A,B,C,N,K,G,H,summa = 1,2,3,10,6,2,3,0
     if A<B<C:
         A=A*2
         B=B*2
         C=C*2
-        return render_template('zadanie.html',A=A, B=B, C=C)
+        result= str(N)*K
+
+        for i in range(1, H+1):
+            summa += i**G
+        slov= [{'A': A, 'B':B, 'C': C, 'summa': summa, 'result': result}]
+        return render_template('zadanie.html',slov=slov)
 
 
