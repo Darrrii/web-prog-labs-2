@@ -45,3 +45,28 @@ def pay():
 def success():
         return render_template('Spasibo.html')
 
+@lab3.route('/lab3/ticket')
+def ticket():
+    errors={}
+    data= request.args.get('data')
+    if data == '':
+        errors['data']= 'Заполните поле!'
+
+    age= request.args.get('age')
+    if age == '':
+        errors['age']= 'Заполните поле!'
+    arr= request.args.get('arr')
+    if arr == '':
+        errors['arr']= 'Заполните поле!'
+    naznach= request.args.get('naznach')
+    if arr == '':
+        errors['naznach']= 'Заполните поле!'
+    return render_template('ticket.html', data=data, age=age, arr=arr,naznach=naznach, errors=errors)
+
+@lab3.route('/lab3/forma')
+def forma():
+            return render_template('forma.html')
+
+
+
+

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 3 {% endblock %}
+
+{% block main %}
+<h1>Покупка билета</h1>
+
+<form action="/lab3/forma">
+    <div>Тип билета</div>
+    <label>
+        <input type="radio" value="children" name="ticket" checked> Детский
+    </label>
+    <label>
+        <input type="radio" value="adult" name="ticket" checked> Взрослый
+    </label>
+    <div>Тип полки</div>
+    <label>
+        <input type="radio"  name="under" > Нижняя
+    </label>
+    <label>
+        <input type="radio"  name="up" > Верхняя
+    </label>
+    <label>
+        <input type="radio"  name="side-up" > Верхняя боковая
+    </label>
+    <label>
+        <input type="radio"  name="side-down" > Нижняя боковая
+    </label>
+    <div>Есть ли багаж?</div>
+    <label>
+        <input type="radio"  name="yes" > Да
+    </label>
+    <label>
+        <input type="radio"  name="no" > Нет
+    </label>
+
+    <label><div>Ваш возраст:</div></label>
+    <div>
+        <input type="number" name="age" value="{{ age or '' }}">
+    </div>
+
+    <div>Пункт выезда: {{ arr }}</div>
+    <div>
+        <input type="text" name="arr" value="{{ arr or '' }}">
+    </div>
+
+    <div>Пункт назначения: {{ naznach }}</div>
+    <div>
+        <input type="text" name="naznach" value="{{ arr or '' }}">
+    </div>
+
+    <div>Дата поездки: {{ data }}</div>
+    <div>
+        <input type="date" name="data" value="{{ data or '' }}">
+    </div>
+
+    <div>
+        <button type="submit">Заказать</button>
+    </div>
+</form>
+{% endblock%}
