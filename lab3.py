@@ -65,7 +65,36 @@ def ticket():
 
 @lab3.route('/lab3/forma')
 def forma():
-            return render_template('forma.html')
+            pay= 0
+            ticket = request.args.get('ticket')
+            if ticket == 'children':
+                 pay= 'Детский билет'
+            else :
+                 pay='Взрослый билет'
+
+            pol=0
+            polka= request.args.get('polka')
+            if polka== 'up':
+                 pol= 'Верхняя полка'
+            elif polka== 'down':
+                 pol='Нижняя полка'
+            elif polka=='side-up':
+                 pol='Верхняя полка'
+            else :
+                 pol='Нижняя полка'
+
+            bag=0
+            bagg= request.args.get('bagg')
+            if bagg=='yes':
+                 bag='Багаж включен'
+            else:
+                 bag='Без багажа'
+
+        
+
+            return render_template('forma.html', pay=pay, pol=pol, bag=bag)
+
+
 
 
 
