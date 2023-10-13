@@ -48,6 +48,10 @@ def success():
 @lab3.route('/lab3/ticket')
 def ticket():
     errors={}
+    FIO= request.args.get('FIO')
+    if FIO == '':
+        errors['FIO']= 'Заполните поле!'
+    
     data= request.args.get('data')
     if data == '':
         errors['data']= 'Заполните поле!'
@@ -55,13 +59,20 @@ def ticket():
     age= request.args.get('age')
     if age == '':
         errors['age']= 'Заполните поле!'
+
     arr= request.args.get('arr')
     if arr == '':
         errors['arr']= 'Заполните поле!'
+
     naznach= request.args.get('naznach')
     if arr == '':
         errors['naznach']= 'Заполните поле!'
-    return render_template('ticket.html', data=data, age=age, arr=arr,naznach=naznach, errors=errors)
+
+    ticket=request.args.get('ticket')
+    polka=request.args.get('polka')
+    bagg=request.args.get('bagg')
+    return render_template('ticket.html',FIO=FIO, data=data, age=age, arr=arr,naznach=naznach,ticket=ticket,
+                           polka=polka,bagg=bagg, errors=errors)
 
 @lab3.route('/lab3/forma')
 def forma():
@@ -89,10 +100,12 @@ def forma():
                  bag='Багаж включен'
             else:
                  bag='Без багажа'
-
-        
-
-            return render_template('forma.html', pay=pay, pol=pol, bag=bag)
+            FIO= request.args.get('FIO')
+            age= request.args.get('age')
+            arr= request.args.get('arr')
+            naznach= request.args.get('naznach')
+            data1=request.args.get('data1')
+            return render_template('forma.html',FIO=FIO, pay=pay, pol=pol, bag=bag,age=age, arr=arr, naznach=naznach, data1=data1 )
 
 
 

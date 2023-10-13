@@ -3,8 +3,18 @@
 {% block lab %} Лабораторная работа 3 {% endblock %}
 
 {% block main %}
+{% if FIO and age and arr and naznach and data %}
+{% else %}
+    <div class="bilet"></div>
     <H1>Сформированный билет</H1>
-    <div>{{ pay }}</div>
-    <div>{{ pol }}</div>
-    <div>{{bag}}</div>
+    <div>ФИО : {{FIO}}</div>
+    <div>Тип билета: {{ pay }} </div>
+    <div>Полка: {{ pol }}</div>
+    <div>Наличие багажа: {{bag}}</div>
+    <div>Ваш возраст: {{ age }}</div>
+    <div>Пункт выезда: {{ arr }} </div>
+    <div>Ваш назначения: {{ naznach }} </div>
+    <div>Дата: {{ data1 }}</div>
+
+{% endif%}
 {% endblock %}
