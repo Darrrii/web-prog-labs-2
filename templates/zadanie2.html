@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block lab %} Задание 2 {% endblock %}
+
+{% block main %}
+<form>
+    <h1>Задание 2</h1>
+    {% if A and B and C and D %}
+
+        {{ result }}
+
+    {% else %}
+    <label> Введите первое число: </label>
+    <div>
+        <input type="number" name="A" >
+    </div>
+    <br>
+
+    <label> Введите второе число: </label>
+    <div>
+        <input type="number" name="B">
+    </div>
+    <br>
+
+    <label> Введите третье число: </label>
+    <div>
+        <input type="number" name="C">
+    </div>
+    <br>
+
+    <label> Введите четвертое число: </label>
+    <div>
+        <input type="number" name="D">
+    </div>
+    <div>
+    <button type="submit">Отправить</button>
+    </div>
+
+</form>
+{% endif%}
+{% endblock %}

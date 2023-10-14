@@ -29,5 +29,21 @@ def login():
 
 @lab4.route('/lab4/success')
 def order():
-    return render_template('login.html')
+    return render_template('login.html',errors=errors)
 
+
+
+@lab4.route('/lab4/xolod', methods = ['GET', 'POST'])
+def xolodil():
+    errors={}
+    if request.method == 'GET':
+        return render_template('xolod.html',errors=errors)
+
+
+    temp = request.form.get('temp')
+    print(temp)
+    if temp == '':
+        errors['temp']= 'Не задана температура'
+    if temp <= '12':
+        errors['temp']= 'Не удалось установить температуру — слишком низкое значение»'
+    return render_template('xolod.html', temp=temp, errors=errors)

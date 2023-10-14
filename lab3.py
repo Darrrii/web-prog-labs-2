@@ -109,6 +109,25 @@ def forma():
             return render_template('forma.html',FIO=FIO, pay=pay, pol=pol, bag=bag,age=age, arr=arr, naznach=naznach, data1=data1 )
 
 
+@lab3.route('/lab3/zadanie')
+def zadan():
+    A=request.args.get("A")
+    B=request.args.get("B")
+    C=request.args.get("C")
+    D=request.args.get("D")
+
+    if A and B and C and D:
+        A=float(A)
+        B=float(B)
+        C=float(C)
+        D=float(D)
+
+    number=[A,B,C,D]
+    result=[]
+    for i in range(len(number)):
+        if number.count(number[i])==1:
+            result=i+1
+    return render_template('zadanie2.html',result=result,number=number, A=A, B=B, C=C, D=D)
 
 
 
