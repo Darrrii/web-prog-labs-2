@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 3 {% endblock %}
+
+{% block main %}
+{% if temp %}
+<form action="/lab4/xolod">
+
+<h1>Результат</h1>
+<div>Температура: {{ temp }} </div>
+{% else %}
+<div>
+    <button  type="submit">Страница авторизации</button>
+</div>
+</form>
+{% endif%}
+{% endblock %}
