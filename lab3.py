@@ -3,7 +3,7 @@ lab3=Blueprint('lab3', __name__)
 
 @lab3.route('/lab3/')
 def lab():
-        return render_template('lab3.html')
+    return render_template('lab3.html')
 
 
 @lab3.route('/lab3/form1')
@@ -68,6 +68,7 @@ def ticket():
     if arr == '':
         errors['naznach']= 'Заполните поле!'
 
+    FIO=request.args.get('FIO')
     ticket=request.args.get('ticket')
     polka=request.args.get('polka')
     bagg=request.args.get('bagg')

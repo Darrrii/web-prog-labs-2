@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 4 {% endblock %}
+
+{% block main %}
+    {% if username %}
+    <form action="/lab4/login">
+        <h1>Здравствуйте, {{ username }}</h1>
+    
+        <h2>Вы успешно вошли, поздравляем</h2>
+        <div>
+            <button  type="submit">Страница авторизации</button>
+        </div>
+        </form> 
+    {% else %}
+    <form action="/lab4/login">
+    <h1>Здравствуйте, авывыаывуа</h1>
+
+    <h2>Вы успешно вошли, поздравляем</h2>
+    <div>
+        <button  type="submit">Страница авторизации</button>
+    </div>
+    </form>
+
+    {% endif%}
+    {% endblock %}
