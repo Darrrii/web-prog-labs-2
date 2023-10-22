@@ -70,5 +70,14 @@ def zerno():
 @lab4.route('/lab4/formazerna',methods = ['GET', 'POST'] )
 def formazerna():
     price=0
-    return render_template('formazerna.html')
+    grain= request.args.get('grain')
+    if grain =='ячмень':
+        price= 12000
+    elif grain=='овёс':
+        price= 8500
+    elif grain=='пшеница':
+        price=8700
+    else:
+        price=14000
+    return render_template('formazerna.html', grain=grain)
 
