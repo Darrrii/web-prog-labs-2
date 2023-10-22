@@ -36,6 +36,9 @@ def order():
 @lab4.route('/lab4/xolod', methods = ['GET','POST'])
 def xolodil():
     errors={}
+    if request.method== 'GET':
+        return render_template('xolod.html', errors=errors)
+
     temp = request.form.get('temp')
     if temp == '':
        errors['temp'] = 'Не задана температура'
@@ -58,4 +61,14 @@ def temper():
     if temp is not None and int(temp) >= '-4' and temp<= '-1' :
         errors['bol']= f'Установлена температура {{temp}}'
 
-    return render_template('temper.html',temp=temp, errors=errors)
+    return render_template('xolod.html',temp=temp, errors=errors)
+
+@lab4.route('/lab4/zerno',methods = ['GET', 'POST'] )
+def zerno():
+    return render_template('zerno.html')
+
+@lab4.route('/lab4/formazerna',methods = ['GET', 'POST'] )
+def formazerna():
+    price=0
+    return render_template('formazerna.html')
+
