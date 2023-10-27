@@ -3,15 +3,13 @@
 {% block lab %} Лабораторная работа 3 {% endblock %}
 
 {% block main %}
-{% if temp %}
-<form action="/lab4/xolod">
-
 <h1>Результат</h1>
-<div>Температура: {{ temp }} </div>
-{% else %}
-<div>
-    <button  type="submit">Страница авторизации</button>
+<div>Температура: {{ temp }} &#x2103; <span class="snow">{{ snow }}</span> 
 </div>
-</form>
-{% endif%}
+
+<div>
+    <a href="/lab4/xolod">Установить другую температуру</a>
+</div>
+
+
 {% endblock %}
