@@ -29,55 +29,86 @@ def login():
 
 @lab4.route('/lab4/success')
 def order():
-    return render_template('login.html',errors=errors)
+    return render_template('login.html')
 
 
 
 @lab4.route('/lab4/xolod', methods = ['GET','POST'])
 def xolodil():
-    errors={}
     if request.method== 'GET':
-        return render_template('xolod.html', errors=errors)
+        return render_template('xolod.html')
 
     temp = request.form.get('temp')
+    error= ''
+
     if temp == '':
-       errors['temp'] = 'Не задана температура'
-    return render_template('xolod.html', errors=errors, temp=temp)
+       error = 'Не задана температура'
+    else:
+        if temp:
+            temp=int(temp)
+            if (temp> -13) and 0>temp:
+                if (temp> -13) and (-8>temp):
+                    snow=''
+                elif (temp>-9) and (-4>temp):
+                    snow = 'snow'
+                elif (temp>-5) and (0> temp):
+                    snow= 'snow'
+                return render_template('temper.html',temp=temp,snow=snow)
+            
+            if temp< -12:
+                error='не удалось установить температуру — слишком низкое значение'
+            if temp > -1:
+                error='не удалось установить температуру — слишком высокое значение'
+    return render_template('xolod.html', error=error, temp=temp)
+            
 
-
-@lab4.route('/lab4/temperatura', methods = ['GET', 'POST'])
-def temper():
-    errors={}
-    temp = request.form.get('temp')
-
-    if temp is not None and int(temp) <= '-12' :
-        errors['min']= 'Не удалось установить температуру — слишком низкое значение»'
-    if temp is not None and int(temp) >= '-1':
-        errors['max']= 'Не удалось установить температуру — слишком высокое значение'
-    if temp is not None and int(temp)>= '-12' and temp<= '-9' :
-        errors['sr']= f'Установлена температура {{int.(temp)}} ' 
-    if temp is not None and int(temp)>= '-8' and temp<= '-5' :
-        errors['men']= f'Установлена температура {{temp}}' 
-    if temp is not None and int(temp) >= '-4' and temp<= '-1' :
-        errors['bol']= f'Установлена температура {{temp}}'
-
-    return render_template('xolod.html',temp=temp, errors=errors)
 
 @lab4.route('/lab4/zerno',methods = ['GET', 'POST'] )
 def zerno():
-    return render_template('zerno.html')
+    if request.method =='GET':
+        return render_template('zerno.html')
+    grain=request.form.get('grain')
+    weight=request.form.get('weight')
+    error=''
 
-@lab4.route('/lab4/formazerna',methods = ['GET', 'POST'] )
-def formazerna():
-    price=0
-    grain= request.args.get('grain')
-    if grain =='ячмень':
-        price= 12000
-    elif grain=='овёс':
-        price= 8500
-    elif grain=='пшеница':
-        price=8700
+    if weight=='':
+        error='Не ввели вес'
     else:
-        price=14000
-    return render_template('formazerna.html', grain=grain)
+        weight=int(weight)
 
+        if weight>50:
+            sale=0.9
+            message='Применена скидка за большой объем'
+        else:
+            sale=1
+            message=''
+
+    if grain =='ячмень':
+        price= 12000*weight*sale
+    elif grain=='овёс':
+        price= 8500*weight*sale
+    elif grain=='пшеница':
+        price=8700*weight*sale
+    else:
+        price=14000*weight*sale
+    if (weight>0) and (501>weight):
+        return render_template('formazerna.html',grain=grain, weight=weight,
+                                   price=price, message=message)
+    if (weight<0) or weight==0:
+        error = 'Неверное значение веса'
+    elif weight> 500:
+        error = 'Объем отстутствует в магазине'
+    return render_template('zerno.html', grain=grain, weight=weight, error=error)
+
+
+@lab4.route('/lab4/cookies', methods=['GET', 'POST'])
+def cookies():
+    if request.method=='GET':
+        return render_template('cookies.html')
+    
+    color=request.form.get('color')
+    headers= {
+        'Set=Cookie': 'color='+color+'; path/',
+        'Location': '/lab4/cookies'
+    }
+    return '', 303, headers

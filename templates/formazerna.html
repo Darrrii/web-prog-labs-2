@@ -3,17 +3,12 @@
 {% block lab %} Лабораторная работа 4 {% endblock %}
 
 {% block main %}
-<form action="/lab4/zerno">
+
 <h1>Заказ успешно сформирован!</h1>
 <div>Вы заказали зерно: {{grain}} </div>
-<div>Вес: {{weight }}</div>
-<div>Сумма к оплате:{{price}} </div>
-<div></div>
-
-
-</form>
-
-
-
+<div>Вес: {{ weight }}</div>
+<div>Сумма к оплате:{{price}}руб. </div>
+<div>{{ message}}</div>
+<div><a href="/lab4/zerno">Заказать снова</a></div>
 
 {% endblock %}
