@@ -6,11 +6,13 @@
     <title>Пушкарева Дарья.{% block lab %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
-    
+
     {% if request.cookies.get('color') %}
     <style>
         body {
             color: {{ request.cookies.get('color') }};
+            background: {{ request.cookies.get('color') }};
+            text : {{ request.cookies.get('text') }};
         }
     </style>
     {% endif %}

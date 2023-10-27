@@ -107,6 +107,14 @@ def cookies():
         return render_template('cookies.html')
     
     color=request.form.get('color')
+    background =request.form.get('background')
+    text==request.form.get('text')
+
+    if color == request.cookies.get('background'):
+            return 'Цвет текста не должен совпадать с цветом фона'
+    
+    if not (5 <= int(text) <= 30):
+            return 'Размер текста должен быть от 5px до 30px'
     headers= {
         'Set=Cookie': 'color='+color+'; path/',
         'Location': '/lab4/cookies'
