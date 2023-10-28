@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 5 {% endblock %}
+
+{% block main %}
+<h1>База знаний</h1>
+<div>Тема лабораторной работы- Flsk и БД.</div>
+<style>
+    a {
+        border: 1px solid rgb(3, 69, 252);
+        margin: 2px;
+        margin-left: 5px;
+        padding: 2px;
+        background-color: rgb(214, 214, 212);
+        text-decoration: none;
+        padding-top: 1px;
+        margin-top: 10px;
+        
+    }
+    div {
+        padding: 5px;
+    }
+</style>
+<a href="/zametki.html">Просмотреть заметки</a>
+<a href="/sozdanie.html">Создать заметку </a>
+<a href="/login.html">Логин </a>
+<a href="/register.html">Зарегестрироваться </a>
+
+{{username}}
+
+{% endblock %}
