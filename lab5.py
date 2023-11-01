@@ -67,18 +67,19 @@ def registerPage():
         print(errors)
         return render_template("register.html", errors=errors)
 
-        conn=dbConnect()
-        cur=conn.cursor()
+    conn=dbConnect()
+    cur=conn.cursor()
 
-        cur.execute(f"select username from users where username= '{username}';")
+    cur.execute(f"select username from users where username= '{username}';")
 
-        if cur.fetchone() is not None:
-            errors.append("Пользователь с данным именем уже существует")
-            dbClose(cur,conn)
-            return render_template("register.html", errors=errors)
-
-        cur.execute(f"insert into users (username,password) values ('{username}', '{password}')")
-
+    if cur.fetchone() is not None:
+        errors.append("Пользователь с данным именем уже существует")
+        
         dbClose(cur,conn)
+        return render_template("register.html", errors=errors)
 
-        return redirect("/lab5/login")
+    cur.execute(f"insert into users (username,password) values ('{username}', '{password}')")
+
+    dbClose(cur,conn)
+
+    return redirect("/lab5/login")

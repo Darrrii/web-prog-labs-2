@@ -3,8 +3,8 @@
 {% block lab %} Лабораторная работа 5 {% endblock %}
 
 {% block main %}
-<form method="post">
-    <h>Страница регистрации</h>
+<form method="POST">
+    <h1>Страница регистрации</h1>
 
     <div>
         <input type="text" name="username" placeholder="username">
@@ -16,6 +16,13 @@
         <label for="password">Пароль</label>
     </div>
     <button type="submit">Зарегестрироваться</button>
+    {% if errors %}
+    <div class="errors">
+        {% for error in errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
 </form>
 
 
