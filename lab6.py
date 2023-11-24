@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, session, Flaskgit, Flask
+from flask import Blueprint, render_template, request, redirect, session, Flask
 from Db import db
 from Db.models import users, articles
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -22,22 +22,25 @@ def articl():
 
 @lab6.route("/lab6/register", methods=["GET", "POST"])
 def register():
-    errors=''
     if request.method =="GET":
         return render_template("register.html")
-
+    errors=''
     username_form= request.form.get("username")
     password_form= request.form.get("password")
 
+    if username_form=='' or password_form =='':
+        errors='Пожалуйста, заполните все поля'
+        return render_template('register.html', errors=errors)
 
     isUserExists=users.query.filter_by(username= username_form).first()
 
     if isUserExists is not None:
-        return render_template("register.html")
+        errors='Пользователь с данным именем уже существует'
+        return render_template("register.html", errors=errors)
 
-    if isUserExists=='':
-        errors= 'Пожалуйста, заполните все поля'
-        return render_template("register.html", errors=errors) 
+    if len(password_form)<5:
+        errors='Придумайте более сложный пароль'
+        return render_template("register.html", errors=errors)
 
     hashedPswd= generate_password_hash(password_form, method='pbkdf2')
     newUser=users(username=username_form, password=hashedPswd)
@@ -49,35 +52,43 @@ def register():
 
 @lab6.route("/lab6/login", methods=["GET", "POST"])
 def login():
-    errors=''
     if request.method =="GET":
         return render_template("5_login.html")
+    
+    errors=''
+    username_form= request.form.get("username")
+    password_form= request.form.get("password")
 
-username_form= request.form.get("username")
-password_form= request.form.get("password")
+    if username_form =='' or password_form == '':
+        errors= 'Пожалуйста, заполните все поля'
+        return render_template(login.html, errors=errors)
 
-if username_form =='' or password_form == '':
-    errors= 'Пожалуйста, заполните все поля'
-    cur=conn.cursor()
+    my_user= users.query.filter_by(username=username_form).first()
 
-cur.execute(f"SELECT id, password FROM users WHERE username= '{username}';")
+    if my_user is None:
+        errors='Такой пользователь уже существует'
+        return render_template('login.html',errors=errors)
+    
+    if not check_password_hash(my_user.password, password_form):
+        errors='Введен неправильный пароль'
+        return render_template('login.html', errors=errors)
 
-result= cur.fetchone()
+    if my_user is not None:
+        if check_password_hash(my_user.password, password_form):
+            login_user(my_user, remember=False)
+            return redirect("/lab6/articles")
+    return render_template("login.html")
 
-if not result:
-    errors='Неправильный логин или пароль'
-    dbClose(cur, conn)
-    return render_template('5_login.html', errors=errors)
+@lab6.route("/lab6/articles")
+@login_required
+def articles_list():
+    my_articles= articles.query.filter_by(user_id=current_user.id).all()
+    return render_template('articles6.html', articles=my_articles)
 
-userID,hashPassword= result
-
-my_user= users.query.filter_by(username=username_form).first()
-
-if my_user is not None:
-    if check_password_hash(my_user.password, password_form):
-        login_user(my_user, remember=False)
-        return redirect("/lab6/articles")
-return render_template("login.html")
-
+@lab6.route("/lab6/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect("/lab6")
 
 

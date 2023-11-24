@@ -10,7 +10,6 @@ from lab3 import lab3
 from lab4 import lab4
 from lab5 import lab5
 from lab6 import lab6
-
 app = Flask(__name__)
 app.secret_key = "123"
 user_db="daria_knowledge_base_orm"
@@ -29,8 +28,8 @@ login_manager=LoginManager()
 login_manager.login_view="lab6.login"
 login_manager.init_app(app)
 
-def load_users(user_id):
-    return users.query.get(int(user_id))
+#def load_users(user_id):
+    #return users.query.get(int(user_id))
 
 
 
