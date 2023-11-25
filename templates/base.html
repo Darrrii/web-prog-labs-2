@@ -11,11 +11,12 @@
     <style>
         body {
             color: {{ request.cookies.get('color') }};
-            background: {{ request.cookies.get('color') }};
-            text : {{ request.cookies.get('text') }};
+            background: {{ request.cookies.get('background-color') }};
+            text: {{ request.cookies.get('font-size') }};
         }
     </style>
     {% endif %}
+{% block script%} {% endblock %}
 
 </head>
 <body>
