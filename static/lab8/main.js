@@ -1,9 +1,9 @@
 function fillCourseList() {
     fetch('/lab8/api/courses/')
-    .then(funtion (data) {
+    .then(function (data) {
         return data.json();
     })
-    .then(funtion (courses) {
+    .then(function (courses) {
         let tbody= document.getElementById('course-list');
         tbody.innerHTML ='';
         for( let i = 0; i<courses.length; i++) {
@@ -22,7 +22,7 @@ function fillCourseList() {
             editButton.innerHTML= 'редактировать';
 
             let delButton= document.createElement('button');
-            editButton.innerHTML= 'удалить';
+            delButton.innerHTML= 'удалить';
 
             let tdActions= document.createElement('td');
             tdActions.append(editButton);
