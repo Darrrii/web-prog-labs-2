@@ -61,7 +61,7 @@ def login():
 
     if username_form =='' or password_form == '':
         errors= 'Пожалуйста, заполните все поля'
-        return render_template(login.html, errors=errors)
+        return render_template("login.html", errors=errors)
 
     my_user= users.query.filter_by(username=username_form).first()
 

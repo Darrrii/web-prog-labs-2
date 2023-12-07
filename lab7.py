@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, abort
 
 lab7= Blueprint('lab7', __name__)
 
@@ -18,7 +18,7 @@ def api():
         return get_price['params']
     if data['method']== 'pay':
         return pay(data['params'])
-abort(400)
+    abort(400)
 
 def get_price(params):
     return {'result': calculate_price(params), "error": None}
