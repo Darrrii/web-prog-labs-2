@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 9 {% endblock %}
+
+{% block script %} {% endblock %}
+
+{% block main %}
     <title>Форма для открытки</title>
-</head>
-<body>
+
     <h1>Введите данные для открытки</h1>
     <form action="/lab9/gift" method="post">
         <label for="recipient_name">Имя получателя:</label>
@@ -20,5 +23,4 @@
 
         <input type="submit" value="Отправить">
     </form>
-</body>
-</html>
+{% endblock %}
