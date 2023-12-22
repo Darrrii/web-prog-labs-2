@@ -31,6 +31,7 @@ def menu():
         <a href="lab6" target="_blank">Лабораторная работа 6</a>
         <a href="lab7" target="_blank">Лабораторная работа 7</a>
         <a href="lab8" target="_blank">Лабораторная работа 8</a>
+        <a href="lab9" target="_blank">Лабораторная работа 9</a>
         </menu>
         <footer>
             &copy; Пушкарева Дарья, Андронова Софья, ФБИ-12, 3 курс, 2023
