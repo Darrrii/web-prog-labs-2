@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Открытка с поздравлением</title>
+</head>
+<body>
+    <h1>С Новым Годом!</h1>
+    <p>Дорогая {% if recipient_gender == 'female' %}{{ recipient_name }},
+         желаю быть счастливой{% else %}{{ recipient_name }}, 
+         желаю быть счастливым{% endif %}!</p>
+    <p>С наилучшими пожеланиями, {{ sender_name }}</p>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Форма для открытки</title>
+</head>
+<body>
+    <h1>Введите данные для открытки</h1>
+    <form action="/lab9/gift" method="post">
+        <label for="recipient_name">Имя получателя:</label>
+        <input type="text" name="recipient_name" id="recipient_name" required><br>
+
+        <label for="recipient_gender">Пол получателя:</label>
+        <select name="recipient_gender" id="recipient_gender" required>
+            <option value="female">Женский</option>
+            <option value="male">Мужской</option>
+        </select><br>
+
+        <label for="sender_name">Имя отправителя:</label>
+        <input type="text" name="sender_name" id="sender_name" required><br>
+
+        <input type="submit" value="Отправить">
+    </form>
+</body>
+</html>
